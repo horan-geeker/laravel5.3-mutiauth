@@ -24,6 +24,11 @@ Route::group([
     Auth::routes();
 });
 
+
+/*
+ * 管理员端路由
+ */
+
 Route::group([
     'prefix'     => 'admin',
     'namespace'  => 'Admin',

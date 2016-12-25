@@ -1,0 +1,14 @@
+.world-map-container {
+	position: relative;
+	border: 1px solid #ddd;
+	cursor: default;
+	.map-marker {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 30px;
+		margin-left: -15px;
+		margin-top: -40px;
+		pointer-events: none;
+	}
+}

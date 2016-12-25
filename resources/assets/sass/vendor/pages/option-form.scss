@@ -1,0 +1,51 @@
+// has-dynamic-fields
+form.has-dynamic-fields {
+	.form-block {
+		.depth-1,
+		.depth-2 {
+			border: 1px dotted #204d74;
+			padding: 20px;
+			margin-top: 20px;
+		}
+		.depth-2.first {
+			margin-top: 0;
+		}
+
+		// remove margin-bottom on form-group
+		.form-group {
+			margin-bottom: 0;
+		}
+
+		// since btn is positioned absolutely
+		.delete-btn-container {
+			position: relative;
+		}
+
+		.btn-delete-depth-1,
+		.btn-delete-depth-2 {
+			position: absolute;
+			right: -60px;
+			top: -21px;
+			width: 40px;
+			text-align: center;
+		}
+
+		.btn-add-depth-1,
+		.btn-add-depth-2 {
+			margin-top: -1px;
+		}
+
+		.depth-1 {
+			background: #fafafa;
+		}
+		// customize depth 2 container border color
+		.depth-2 {
+			border-color: #208992;
+			background: #eee;
+		}
+
+		.btn-container {
+			height: 34px;
+		}
+	}
+}

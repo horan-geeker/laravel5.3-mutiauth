@@ -1,0 +1,79 @@
+@charset "UTF-8";
+
+$remove-color: #888;
+$remove-hover-color: #555;
+$remove-width: 20px;
+
+$selection-color: #444;
+
+$border-color: #c2cad8;
+$border-radius: 0;
+
+$focus-border-color: #93a1bb;
+
+$container-height: 34px;
+
+$selection-bg-top-color: white;
+$selection-bg-bottom-color: #eeeeee;
+
+$container-placeholder-color: #999;
+
+$container-focus-border-color: blue;
+
+$selection-opened-bg-top-color: $selection-bg-bottom-color;
+$selection-opened-bg-bottom-color: $selection-bg-top-color;
+
+$dropdown-z-index: 1;
+
+$dropdown-bg-color: $selection-bg-top-color;
+
+$results-max-height: 200px;
+$results-nested-padding: 20px;
+
+$results-choice-bg-hover-color: #5897fb;
+$results-choice-fg-hover-color: #5897fb;
+
+$results-choice-fg-unselectable-color: grey;
+
+// select2 select
+@mixin j-select2($bg-color: #fff, $height: 34px) {
+	.select2-container {
+		.select2-selection {
+			outline: 0;
+			border: 1px solid #c2cad8;
+			border-radius: 0;
+			background: $bg-color;
+			height: $height;
+			line-height: $height;
+			.select2-selection__rendered {
+				line-height: $height;
+				height: $height;
+			}
+		}
+		.select2-selection--single {
+			height: $height;
+		}
+		.select2-selection__arrow {
+			display: none;
+		}
+	}
+}
+
+
+// select2 dropdown
+.select2-dropdown {
+	border: 1px solid #ddd;
+	box-shadow: 0 0 1px rgba(0,0,0,.1);
+	overflow: hidden;
+}
+
+&.has-select-tag {
+	@include j-select2(#fff, 34px);
+	position: relative;
+	.fa-chevron-down {
+		position: absolute;
+		right: 10px;
+		bottom: 10px;
+		color: #999;
+	}
+}

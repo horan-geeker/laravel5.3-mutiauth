@@ -14,11 +14,19 @@ require('laravel-elixir-vue-2');
  */
 
 elixir(function (mix) {
-	mix.sass('admin/app.scss', 'public/assets/css/admin/app.css')
+	mix.sass([
+		'admin/app.scss',
+		'vendor/global/components.scss',
+		'vendor/global/plugins.scss',
+		'vendor/layouts/layout/layout.scss',
+		'vendor/layouts/layout/themes/default.scss',
+		'vendor/layouts/layout/themes/darkblue.scss',
+		'vendor/layouts/layout/custom.scss',
+	], 'public/assets/css/admin/app.css')
 
 		.scripts([
-			'admin/app.js',
-			'admin/alert.js',
+			'vendor/jquery.min.js',
+			'vendor/bootstrap.min.js',
 		], 'public/assets/js/admin/app.js')
 
 		.version([
