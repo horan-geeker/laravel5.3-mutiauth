@@ -11,7 +11,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
-    <link href="/css/app.css" rel="stylesheet">
+    <link href="{{ elixir('assets/sass/app.scss') }}" rel="stylesheet">
 
     <!-- Scripts -->
     <script>
@@ -19,6 +19,7 @@
             'csrfToken' => csrf_token(),
         ]); ?>
     </script>
+    <script src="{{ elixir('assets/js/app.js') }}"></script>
 </head>
 <body>
     <div id="app">

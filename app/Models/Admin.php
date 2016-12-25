@@ -28,6 +28,11 @@ class Admin extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function permissions()
+    {
+        return $this->belongsToMany(Permission::class,'admin_permissions');
+    }
+
     /**
      * 覆盖了Authenticatable里的trait CanResetPassword的方法
      *

@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Permission;
 use Illuminate\Database\Seeder;
 
 class AdminsTableSeeder extends Seeder
@@ -11,10 +12,30 @@ class AdminsTableSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\Admin::create([
-            'name' => '后台管理员',
-            'email' => 'admin@admin.com',
+        $admin = \App\Models\Admin::create([
+            'name'     => '超级管理员',
+            'email'    => 'admin@admin.com',
             'password' => bcrypt('admin123'),
         ]);
+
+        $permissions = [
+            ['name' => 'admin module', 'description' => '后台管理'],
+            ['name' => 'user module', 'description' => '用户管理'],
+        ];
+
+        Permission::insert($permissions);
+
+        $admin->permissions()->saveMany([
+            Permission::find(1),
+            Permission::find(2),
+        ]);
+
+        $user = \App\Models\Admin::create([
+            'name'     => '用户管理员',
+            'email'    => 'user@admin.com',
+            'password' => bcrypt('admin123'),
+        ]);
+
+        $user->permissions()->save(Permission::find(2));
     }
 }
