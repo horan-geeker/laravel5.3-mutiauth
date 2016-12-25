@@ -25,8 +25,11 @@ elixir(function (mix) {
 	], 'public/assets/css/admin/app.css')
 
 		.scripts([
+			'app.js',
 			'vendor/jquery.min.js',
 			'vendor/bootstrap.min.js',
+			'vendor/jquery.pjax.min.js',
+			'vendor/topbar.min.js',
 		], 'public/assets/js/admin/app.js')
 
 		.version([

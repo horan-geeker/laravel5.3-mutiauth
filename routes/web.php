@@ -37,4 +37,6 @@ Route::group([
     Auth::routes();
 
     $route->get('/', 'HomeController@index');
+    $route->resource('managers','ManagerController');
+    $route->resource('users','UserController');
 });
