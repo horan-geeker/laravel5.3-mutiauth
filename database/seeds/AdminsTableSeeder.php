@@ -19,8 +19,8 @@ class AdminsTableSeeder extends Seeder
         ]);
 
         $permissions = [
-            ['name' => 'admin module', 'description' => '后台管理'],
-            ['name' => 'user module', 'description' => '用户管理'],
+            ['name' => 'admin module', 'description' => '管理员管理', 'uri' => '/admin/managers', 'title' => '后台管理'],
+            ['name' => 'user module', 'description' => '用户管理', 'uri' => '/admin/users', 'title' => '前台管理'],
         ];
 
         Permission::insert($permissions);

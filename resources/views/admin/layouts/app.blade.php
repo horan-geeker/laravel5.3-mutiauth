@@ -21,67 +21,99 @@
     </script>
 </head>
 <body>
-    <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
-            <div class="container">
-                <div class="navbar-header">
+@if(auth()->guard('admin')->user())
+    <!-- BEGIN HEADER -->
+<div class="page-header navbar navbar-fixed-top">
+    <!-- BEGIN HEADER INNER -->
+    <div class="page-header-inner">
+        <!-- BEGIN LOGO -->
+        <div class="page-logo">
+            <a href="/admin/carousels">
+                {{--<img src="../assets/layouts/layout/img/logo.png" alt="logo" class="logo-default"/>--}}
 
-                    <!-- Collapsed Hamburger -->
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                        <span class="sr-only">Toggle Navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-
-                    <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        Admin
-                    </a>
-                </div>
-
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        &nbsp;
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
-                        <!-- Authentication Links -->
-                        @if (!auth('admin')->user())
-                            <li><a href="{{ url('/admin/login') }}">Login</a></li>
-                            <li><a href="{{ url('/admin/register') }}">Register</a></li>
-                        @else
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ auth('admin')->user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <ul class="dropdown-menu" role="menu">
-                                    <li>
-                                        <a href="{{ url('/admin/logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a>
-
-                                        <form id="logout-form" action="{{ url('/admin/logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
-                                </ul>
-                            </li>
-                        @endif
-                    </ul>
-                </div>
+                后台管理系统
+            </a>
+            <div class="menu-toggler sidebar-toggler hide">
+                <!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
             </div>
-        </nav>
+        </div>
+        <!-- END LOGO -->
+        <!-- BEGIN RESPONSIVE MENU TOGGLER -->
+        <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
+            <span></span>
+        </a>
+        <!-- END RESPONSIVE MENU TOGGLER -->
+        <!-- BEGIN TOP NAVIGATION MENU -->
+        <div class="top-menu">
+            <ul class="nav navbar-nav pull-right">
+                <!-- BEGIN USER LOGIN DROPDOWN -->
+                <li class="dropdown dropdown-user">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                        <span class="username"> {{ auth()->guard('admin')->user() ? auth()->guard('admin')->user()->name : '' }} </span>
+                        <i class="fa fa-angle-down"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="/admin/logout" onclick="event.preventDefault();
+        document.getElementById('logout-form').submit();">
+                                <i class="icon-key"></i> 退出 </a>
 
-        @yield('content')
+                            <form id="logout-form" action="{{ url('/admin/logout') }}" method="POST" style="display: none;">
+                                {{ csrf_field() }}
+                            </form>
+                        </li>
+                    </ul>
+                </li>
+                <!-- END USER LOGIN DROPDOWN -->
+            </ul>
+        </div>
+        <!-- END TOP NAVIGATION MENU -->
     </div>
+    <!-- END HEADER INNER -->
+</div>
+<!-- END HEADER -->
 
-    <!-- Scripts -->
+{{--<div class="clearfix"></div>--}}
+
+<div class="page-container">
+
+@include('admin.components.page-sidebar')
+
+<!-- BEGIN PAGE CONTENT -->
+    <div class="page-content-wrapper" id="page_content_container">
+        <!-- BEGIN CONTENT -->
+        <div class="page-content" id="page_content">
+
+            {{-- BEGIN FLASH MESSAGE --}}
+            @if(session('flash_error_message'))
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
+                    {{ session('flash_error_message') }}
+                </div>
+            @elseif(session('flash_success_message'))
+                <div class="alert alert-success alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
+                    {{ session('flash_success_message') }}
+                </div>
+            @endif
+            {{-- END FLASH MESSAGE --}}
+
+            {{-- VIEW CONTENT --}}
+            @yield('content')
+
+        </div>
+        <!-- END CONTENT -->
+    </div>
+    <!-- END PAGE CONTENT -->
+</div>
+@else
+    <!-- BEGIN NON AUTHENTICATED USER PAGE CONTENT -->
+    @yield('content')
+    <!-- END NON AUTHENTICATED USER PAGE CONTENT -->
+@endif
+
+
+<!-- Scripts -->
     <script src="{{ elixir('assets/js/admin/app.js') }}"></script>
 </body>
 </html>
