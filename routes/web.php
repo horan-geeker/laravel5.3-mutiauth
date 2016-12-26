@@ -29,14 +29,16 @@ Route::group([
  * 管理员端路由
  */
 
+
 Route::group([
     'prefix'     => 'admin',
     'namespace'  => 'Admin',
+    'middleware' => 'pjax',
 ], function ($route) {
 
     Auth::routes();
 
     $route->get('/', 'HomeController@index');
-    $route->resource('managers','ManagerController');
-    $route->resource('users','UserController');
+    $route->resource('managers', 'ManagerController');
+    $route->resource('users', 'UserController');
 });

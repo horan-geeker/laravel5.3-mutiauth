@@ -3,6 +3,11 @@
  * Copyright 2011-2015 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
+
+$simple-line-font-path: "/assets/fonts/simple-line-font/";
+$icon-font-path: "/assets/fonts/bootstrap/";
+$fa-font-path: "/assets/fonts/font-awesome/";
+
 // Core variables and mixins
 @import "../vendor/bootstrap/variables";
 @import "../vendor/bootstrap/mixins";
@@ -51,3 +56,7 @@
 // Utility classes
 @import "../vendor/bootstrap/utilities";
 @import "../vendor/bootstrap/responsive-utilities";
+//三大常用组件
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+@import "node_modules/font-awesome/scss/font-awesome";
+@import "node_modules/sweetalert/dist/sweetalert";

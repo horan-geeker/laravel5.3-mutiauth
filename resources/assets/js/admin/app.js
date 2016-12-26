@@ -1,20 +1,30 @@
+(function () {
 
-/**
- * First we will load all of this project's JavaScript dependencies which
- * include Vue and Vue Resource. This gives a great starting point for
- * building robust, powerful web applications using Vue and Laravel.
- */
+	// define app factory
+	packager('app');
 
-require('./bootstrap');
+	app = {
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the body of the page. From here, you may begin adding components to
- * the application, or feel free to tweak this setup for your needs.
- */
+		// init app
+		init: function () {
 
-Vue.component('example', require('./components/Example.vue'));
+			// config app
+			this.config.init();
+			this.components.table.init();
+			this.components.form.init();
+			this.components.sidebar.init();
+		},
 
-const app = new Vue({
-    el: '#app'
-});
+		// app config
+		config: {},
+
+		// app components
+		components: {},
+
+		// app modules
+		modules: {},
+
+		// app global functions
+		utils: {}
+	};
+})();

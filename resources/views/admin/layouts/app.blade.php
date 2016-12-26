@@ -58,7 +58,7 @@
                             <li>
                                 <a href="/admin/logout" onclick="event.preventDefault();
         document.getElementById('logout-form').submit();">
-                                    <i class="icon-key"></i> 退出 </a>
+                                    <i class="fa fa-btn fa-sign-out"></i> 退出 </a>
 
                                 <form id="logout-form" action="{{ url('/admin/logout') }}" method="POST"
                                       style="display: none;">
@@ -118,5 +118,11 @@
 
 <!-- Scripts -->
 <script src="{{ elixir('assets/js/admin/app.js') }}"></script>
+<script>
+    $(function() {
+        // init app
+        app.init();
+    });
+</script>
 </body>
 </html>
