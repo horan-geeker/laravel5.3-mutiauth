@@ -16,8 +16,14 @@ require('laravel-elixir-livereload');
  |
  */
 
+
 elixir(function (mix) {
 	mix
+	//用户端
+		.sass('web/app.scss', 'public/assets/css/web/app.css')
+		.webpack('web/app.js', 'public/assets/js/web/app.js')
+
+		//管理员端
 		.copy([
 			'node_modules/bootstrap-sass/assets/fonts/bootstrap'
 		], 'public/build/assets/fonts')
@@ -52,13 +58,15 @@ elixir(function (mix) {
 		], 'public/assets/js/admin/app.js')
 
 		.version([
+			'assets/css/web/app.css',
 			'assets/css/admin/app.css',
+			'assets/js/web/app.js',
 			'assets/js/admin/app.js',
-		])
+		]);
 
-		.livereload();
+	// .livereload();
 
-	if (elixir.config.production) {
-		mix.compress();
-	}
+	// if (elixir.config.production) {
+	// 	mix.compress();
+	// }
 });

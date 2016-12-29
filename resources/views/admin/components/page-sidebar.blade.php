@@ -26,7 +26,7 @@ $pathname = explode($_SERVER['HTTP_HOST'], url()->current())[1];
                     <h3 class="uppercase">{{ $title }}</h3>
                 </li>
                 @foreach($submodule as $module)
-                    <li>
+                    <li class="{{ $pathname == $module->uri ? 'active':null }}">
                         <a href="{{ $module->uri }}"
                            data-pjax
                            data-container="#page_content_container"
