@@ -18,5 +18,5 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:api');
 
 Route::get('users',function (){
-    return response(\App\Models\User::all()->toJson());
+    return response()->json(\App\Models\User::all());
 });

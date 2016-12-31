@@ -15,50 +15,12 @@
     </script>
 </head>
 <body>
-<div v-cloak id="app" class="container">
+<div v-cloak id="app">
+
     <navbar></navbar>
-    <div class="row">
-        <div class="col-md-6">
-            Laravel-MutiAuth
-        </div>
-        <div class="col-md-6">
-            @{{ msg }}
-            <br>
-            <input type="text" v-model="msg">
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-            <ul>
-                <li v-for="user in users">
-                    name: @{{ user.name }} email: @{{ user.email }}
-                </li>
-            </ul>
-        </div>
-        <div class="col-md-6">
-            <p>@{{ message }}</p>
-            <button v-on:click="reverseMessage">Reverse Message</button>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-            <input v-model="newTodo" v-on:keyup.enter="addTodo">
-            <ul>
-                <li v-for="(todo,key,index) in todos">
-                    <span>@{{ todo.text }}</span>
-                    <button v-on:click="removeTodo(index)">X</button>
-                </li>
-            </ul>
-        </div>
-        <div class="col-md-6">
-            <todo-item v-for="item in groceryList" v-bind:todo="item"></todo-item>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <example></example>
-        </div>
-    </div>
+
+    <container></container>
+
     <foot></foot>
 </div>
 <script src="{{ elixir('assets/js/web/app.js') }}"></script>
