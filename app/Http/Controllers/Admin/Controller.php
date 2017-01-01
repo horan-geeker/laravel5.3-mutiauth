@@ -11,7 +11,7 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    protected $admin = null;
+//    protected $admin = null;
 
     public function __construct()
     {

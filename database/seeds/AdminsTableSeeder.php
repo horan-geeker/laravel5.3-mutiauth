@@ -21,14 +21,12 @@ class AdminsTableSeeder extends Seeder
         $permissions = [
             ['name' => 'admin module', 'description' => '管理员管理', 'uri' => '/admin/managers', 'title' => '后台管理'],
             ['name' => 'user module', 'description' => '用户管理', 'uri' => '/admin/users', 'title' => '前台管理'],
+            ['name' => 'schedule module', 'description' => '定期任务', 'uri' => '/admin/schedules', 'title' => '任务管理'],
         ];
 
         Permission::insert($permissions);
 
-        $admin->permissions()->saveMany([
-            Permission::find(1),
-            Permission::find(2),
-        ]);
+        $admin->permissions()->saveMany(Permission::all());
 
         $user = \App\Models\Admin::create([
             'name'     => '用户管理员',
