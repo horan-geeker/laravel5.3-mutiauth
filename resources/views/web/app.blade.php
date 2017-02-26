@@ -14,15 +14,11 @@
         ]); ?>
     </script>
 </head>
+
 <body>
-<div v-cloak id="app">
 
-    <navbar></navbar>
+<div id="app"></div>
 
-    <container></container>
-
-    <foot></foot>
-</div>
 <script src="{{ elixir('assets/js/web/app.js') }}"></script>
 </body>
 </html>

@@ -20,16 +20,16 @@
                     </ul>
                 </div>
                 <div class="col-md-6">
-                    <button v-on:click='reverseMessage'>Reverse Message</button>
+                    <button @click='reverseMessage'>Reverse Message</button>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-6">
-                    <input v-model="newTodo" v-on:keyup.enter="addTodo">
+                    <input v-model="newTodo" @keyup.enter="addTodo">
                     <ul>
                         <li v-for="(todo,index) in todos">
                             <span>{{ todo.text }}</span>
-                            <button v-on:click="removeTodo(index)">X</button>
+                            <button @click="removeTodo(index)">X</button>
                         </li>
                     </ul>
                 </div>
@@ -40,7 +40,7 @@
 <style>
 </style>
 <script>
-import Storage from '../storage.js'
+import Storage from '../../storage.js'
 
 export default{
         created: function () {
@@ -48,7 +48,7 @@ export default{
                 this.users = data.body;
             })
         },
-        data:function(){
+        data(){
             return {
                 msg:'hello hejunwei',
                 users:null,
@@ -74,5 +74,6 @@ export default{
             },
 		},
     }
+
 
 </script>

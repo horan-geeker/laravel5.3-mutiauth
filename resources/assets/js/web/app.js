@@ -13,16 +13,11 @@ require('./bootstrap');
  */
 
 // Vue.component('example', require('./components/Example.vue'));
-import Example from './components/Example.vue'
-import Navbar from './components/Navbar.vue'
-import Foot from './components/Foot.vue'
-import Container from './components/Container.vue'
+import App from './App.vue'
 
-Vue.config.debug = true;//开启错误提示
+Vue.config.debug = true
 
-const app = new Vue({
-	el: '#app',
-	components: {
-		Example, Navbar,Foot,Container
-	}
-});
+new Vue({
+    template: '<App/>',
+    components: {App},
+}).$mount('#app')

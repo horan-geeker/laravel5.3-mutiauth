@@ -50,7 +50,7 @@ elixir(function (mix) {
 			'./node_modules/jquery/dist/jquery.js',
 			'./node_modules/bootstrap-sass/assets/javascripts/bootstrap.js',
 			'./node_modules/sweetalert/dist/sweetalert.min.js',
-			'./node_modules/jquery-validate/dist/validate.js',
+			'./node_modules/jquery-validation/dist/jquery.validate.js',
 			'vendor/packager.min.js',
 			'admin/**',
 			'./node_modules/jquery-pjax/jquery.pjax.js',

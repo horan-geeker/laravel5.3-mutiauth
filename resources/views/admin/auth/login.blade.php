@@ -17,7 +17,7 @@
 
                                 <div class="col-md-6">
                                     <input id="email" type="email" class="form-control" name="email"
-                                           value="{{ old('email') }}" required autofocus>
+                                           value="{{ old('email') }}" required autofocus data-msg-required="请输入邮件">
 
                                     @if ($errors->has('email'))
                                         <span class="help-block">
@@ -31,7 +31,7 @@
                                 <label for="password" class="col-md-4 control-label">Password</label>
 
                                 <div class="col-md-6">
-                                    <input id="password" type="password" class="form-control" name="password" required>
+                                    <input id="password" type="password" class="form-control" name="password" required data-msg-required="请输入密码">
 
                                     @if ($errors->has('password'))
                                         <span class="help-block">

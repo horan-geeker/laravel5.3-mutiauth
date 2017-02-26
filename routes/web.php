@@ -12,18 +12,8 @@
 */
 
 Route::get('/', function () {
-    return view('web/welcome');
+    return view('web/app');
 });
-
-Route::group([
-    'namespace' => 'Web',
-], function ($route) {
-
-    $route->get('/home', 'HomeController@index');
-
-    Auth::routes();
-});
-
 
 /*
  * 管理员端路由
