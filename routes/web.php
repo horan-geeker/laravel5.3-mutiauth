@@ -14,6 +14,14 @@
 Route::get('/', function () {
     return view('web/app');
 });
+Route::group([
+    'namespace' => 'Web',
+], function ($route) {
+
+    $route->get('/home', 'HomeController@index');
+
+    Auth::routes();
+});
 
 /*
  * 管理员端路由
@@ -21,8 +29,8 @@ Route::get('/', function () {
 
 
 Route::group([
-    'prefix'     => 'admin',
-    'namespace'  => 'Admin',
+    'prefix' => 'admin',
+    'namespace' => 'Admin',
     'middleware' => 'pjax',
 ], function ($route) {
 
