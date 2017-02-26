@@ -57,12 +57,13 @@ elixir(function (mix) {
 			'vendor/topbar.js',
 		], 'public/assets/js/admin/app.js')
 
-		.version([
-			'assets/css/web/app.css',
-			'assets/css/admin/app.css',
-			'assets/js/web/app.js',
-			'assets/js/admin/app.js',
-		]);
+		// .version([
+		// 	'assets/css/web/app.css',
+		// 	'assets/css/admin/app.css',
+		// 	'assets/js/web/app.js',
+		// 	'assets/js/admin/app.js',
+		// ])
+	;
 
 	// .livereload();
 

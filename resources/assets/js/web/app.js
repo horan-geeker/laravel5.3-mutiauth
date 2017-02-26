@@ -14,10 +14,12 @@ require('./bootstrap');
 
 // Vue.component('example', require('./components/Example.vue'));
 import App from './App.vue'
+import router from './router.js'
 
 Vue.config.debug = true
 
 new Vue({
     template: '<App/>',
     components: {App},
+    router
 }).$mount('#app')

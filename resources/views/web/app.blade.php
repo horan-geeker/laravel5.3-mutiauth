@@ -5,12 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <title>{{ config('app.name','Laravel+Vue') }}</title>
 
-    <link href="{{ elixir('assets/css/web/app.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ elixir('assets/css/web/app.css','') }}" rel="stylesheet" type="text/css">
     <script>
         window.Laravel = <?php echo json_encode([
                 'csrfToken' => csrf_token(),
+                'appName' => config('app.name','Laravel+Vue')
         ]); ?>
     </script>
 </head>
@@ -19,6 +20,6 @@
 
 <div id="app"></div>
 
-<script src="{{ elixir('assets/js/web/app.js') }}"></script>
+<script src="{{ elixir('assets/js/web/app.js','') }}"></script>
 </body>
 </html>

@@ -11,18 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('web/app');
-});
-Route::group([
-    'namespace' => 'Web',
-], function ($route) {
-
-    $route->get('/home', 'HomeController@index');
-
-    Auth::routes();
-});
-
 /*
  * 管理员端路由
  */
@@ -40,3 +28,19 @@ Route::group([
     $route->resource('managers', 'ManagerController');
     $route->resource('users', 'UserController');
 });
+
+
+Route::get('/{catchall?}', function () {
+    return response()->view('web/app');
+})->where('catchall', '(.*)');
+
+Route::group([
+    'namespace' => 'Web',
+], function ($route) {
+
+    $route->get('/home', 'HomeController@index');
+
+    Auth::routes();
+});
+
+

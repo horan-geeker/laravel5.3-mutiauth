@@ -1,7 +1,11 @@
 <template>
     <div>
         <v-nav></v-nav>
-        <v-container></v-container>
+        <div style="min-height:400px">
+            <keep-alive>
+                <router-view :token="token"></router-view>
+            </keep-alive>
+        </div>
         <v-foot></v-foot>
     </div>
 </template>
@@ -15,7 +19,7 @@
     export default{
         data () {
             return {
-                msg: 'hello vue',
+                token: window.Laravel.csrfToken,
             }
         },
         components:{
