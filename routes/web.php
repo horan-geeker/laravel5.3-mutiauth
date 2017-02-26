@@ -29,18 +29,10 @@ Route::group([
     $route->resource('users', 'UserController');
 });
 
+/*
+ * 前端路由，由 vue-router 处理路由
+ */
 
-Route::get('/{catchall?}', function () {
-    return response()->view('web/app');
+Route::any('/{catchall?}', function () {
+    return view('web/app');
 })->where('catchall', '(.*)');
-
-Route::group([
-    'namespace' => 'Web',
-], function ($route) {
-
-    $route->get('/home', 'HomeController@index');
-
-    Auth::routes();
-});
-
-
