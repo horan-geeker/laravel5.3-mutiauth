@@ -21,7 +21,6 @@ Route::group([
     'namespace' => 'Admin',
     'middleware' => 'pjax',
 ], function ($route) {
-
     Auth::routes();
 
     $route->get('/', 'HomeController@index');

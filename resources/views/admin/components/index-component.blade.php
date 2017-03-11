@@ -46,6 +46,8 @@
             @endforeach
             <td class="text-center">
                 <a href="{{ $indexUrl.$item->id }}/edit"
+                   data-pjax
+                   data-container="#page_content_container"
                    class="btn btn-primary btn-xs btn-edit">编辑</a>
                 <button class="btn btn-danger btn-xs btn-delete"
                         data-url="{{ $indexUrl.$item->id }}">删除

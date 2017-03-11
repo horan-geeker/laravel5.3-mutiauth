@@ -278,21 +278,21 @@
 		$(document).on('pjax:send', function () {
 			topbar.show();
 
-			var count = .6;
-			step();
-
-			// speed up fake progress
-			function step() {
-				var intervalId = setInterval(function () {
-					if (count <= 0) {
-						topbar.hide();
-						clearInterval(intervalId);
-						return;
-					}
-					topbar.progress(count);
-					count = count + 0.05;
-				}, 5)
-			}
+			// var count = .6;
+			// step();
+            //
+			// // speed up fake progress
+			// function step() {
+			// 	var intervalId = setInterval(function () {
+			// 		if (count <= 0) {
+			// 			topbar.hide();
+			// 			clearInterval(intervalId);
+			// 			return;
+			// 		}
+			// 		topbar.progress(count);
+			// 		count = count + 0.05;
+			// 	}, 5)
+			// }
 		}).on('pjax:success', function (e, data, status, xhr, options) {
 
 			// call the callback function if there is any
@@ -304,7 +304,7 @@
 			topbar.hide();
 
 			// re init app
-			app.init();
+			// app.init();
 		}).on('pjax:timeout', function (event) {
 			event.preventDefault();
 

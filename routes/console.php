@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Foundation\Inspiring;
-
+use Workerman\Worker;
+use PHPSocketIO\SocketIO;
 /*
 |--------------------------------------------------------------------------
 | Console Routes
@@ -16,3 +17,14 @@ use Illuminate\Foundation\Inspiring;
 Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->describe('Display an inspiring quote');
+
+Artisan::command('socket',function (){
+    // 创建socket.io服务端，监听2021端口
+    $io = new SocketIO(3120);
+    // 当有客户端连接时打印一行文字
+    $io->on('connection', function($connection)use($io){
+        echo "new connection coming\n";
+    });
+
+    Worker::runAll();
+});
