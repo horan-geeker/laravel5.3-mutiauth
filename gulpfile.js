@@ -24,17 +24,17 @@ elixir(function (mix) {
 		.webpack('web/app.js', 'public/assets/js/web/app.js')
 
 		//管理员端
-		.copy([
-			'node_modules/bootstrap-sass/assets/fonts/bootstrap'
-		], 'public/build/assets/fonts')
-
-		.copy([
-			'node_modules/font-awesome/fonts'
-		], 'public/build/assets/fonts')
-
-		.copy([
-			'node_modules/simple-line-icons/fonts'
-		], 'public/build/assets/fonts')
+		// .copy([
+		// 	'node_modules/bootstrap-sass/assets/fonts/bootstrap'
+		// ], 'public/'+path+'/fonts/bootstrap')
+        //
+		// .copy([
+		// 	'node_modules/font-awesome/fonts'
+		// ], 'public/'+path+'/fonts/font-awesome')
+        //
+		// .copy([
+		// 	'node_modules/simple-line-icons/fonts'
+		// ], 'public/'+path+'/fonts/simple-line-icons')
 
 		.sass([
 			'admin/app.scss',
@@ -57,16 +57,15 @@ elixir(function (mix) {
 			'vendor/topbar.js',
 			'vendor/select2.full.min.js',
 		], 'public/assets/js/admin/app.js')
-
-		.version([
-			'assets/css/web/app.css',
-			'assets/css/admin/app.css',
-			'assets/js/web/app.js',
-			'assets/js/admin/app.js',
-		]);
+        .version([
+            'assets/css/web/app.css',
+            'assets/css/admin/app.css',
+            'assets/js/web/app.js',
+            'assets/js/admin/app.js',
+        ]);
 
 	if (elixir.config.production) {
-		mix.compress();
+		mix.compress()
 	} else{
     	mix.livereload();
 	}

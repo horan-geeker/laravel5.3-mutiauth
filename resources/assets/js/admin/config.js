@@ -262,7 +262,6 @@
 	// --------------------------------------------------------------
 	// pjax config
 	function initPjax() {
-
 		$.pjax.defaults.timeout = 1500;
 		$.pjax.defaults.maxCacheLength = 0;
 		$.pjax.defaults.scrollTo = false;
@@ -304,7 +303,7 @@
 			topbar.hide();
 
 			// re init app
-			// app.init();
+			app.init();
 		}).on('pjax:timeout', function (event) {
 			event.preventDefault();
 
