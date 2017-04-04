@@ -11,7 +11,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
-    <link href="{{ elixir('assets/css/admin/app.css','') }}" rel="stylesheet">
+    <link href="{{ elixir('assets/css/admin/app.css') }}" rel="stylesheet">
 
     <!-- Scripts -->
     <script>
@@ -116,7 +116,7 @@
 </div>
 
 <!-- Scripts -->
-<script src="{{ elixir('assets/js/admin/app.js','') }}"></script>
+<script src="{{ elixir('assets/js/admin/app.js') }}"></script>
 <script>
     $(function () {
         // init app

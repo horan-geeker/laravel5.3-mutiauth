@@ -3,7 +3,7 @@
     packager('app.components.table');
 
     app.components.table = {
-        init() {
+        init:function() {
             this.initRowClick();
             this.initBtnDelete();
             this.initBtnEdit();

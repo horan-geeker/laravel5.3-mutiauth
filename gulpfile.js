@@ -53,21 +53,21 @@ elixir(function (mix) {
 			'./node_modules/jquery-validation/dist/jquery.validate.js',
 			'vendor/packager.min.js',
 			'admin/**',
-			'./node_modules/jquery-pjax/jquery.pjax.js',
+			'vendor/jquery.pjax.js',
 			'vendor/topbar.js',
+			'vendor/select2.full.min.js',
 		], 'public/assets/js/admin/app.js')
 
-		// .version([
-		// 	'assets/css/web/app.css',
-		// 	'assets/css/admin/app.css',
-		// 	'assets/js/web/app.js',
-		// 	'assets/js/admin/app.js',
-		// ])
-	;
+		.version([
+			'assets/css/web/app.css',
+			'assets/css/admin/app.css',
+			'assets/js/web/app.js',
+			'assets/js/admin/app.js',
+		]);
 
-	// .livereload();
-
-	// if (elixir.config.production) {
-	// 	mix.compress();
-	// }
+	if (elixir.config.production) {
+		mix.compress();
+	} else{
+    	mix.livereload();
+	}
 });

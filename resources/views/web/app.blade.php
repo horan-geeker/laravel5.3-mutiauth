@@ -7,7 +7,7 @@
 
     <title>{{ config('app.name','Laravel+Vue') }}</title>
 
-    <link href="{{ elixir('assets/css/web/app.css','') }}" rel="stylesheet" type="text/css">
+    <link href="{{ elixir('assets/css/web/app.css') }}" rel="stylesheet" type="text/css">
     <script>
         window.Laravel = <?php echo json_encode([
                 'csrfToken' => csrf_token(),
@@ -20,6 +20,6 @@
 
 <div id="app"></div>
 
-<script src="{{ elixir('assets/js/web/app.js','') }}"></script>
+<script src="{{ elixir('assets/js/web/app.js') }}"></script>
 </body>
 </html>

@@ -1,7 +1,7 @@
 <h3 class="page-title">
     {{ $pageTitle }}
     <small>{{ $smallTitle }}</small>
-    <a href="{{ $createUrl }}" class="btn btn-primary pull-right">{{ $linkCreateCaption }}</a>
+    <a href="{{ $createUrl }}" data-pjax data-container="#page_content_container" class="btn btn-primary pull-right">{{ $linkCreateCaption }}</a>
 </h3>
 
 <!-- END PAGE HEADER-->
@@ -32,7 +32,7 @@
     @foreach($list as $item)
         <tr
                 data-target="_blank"
-                data-url="{{ $redirectTo.$item->id }}?locale=zh"
+                data-url="{{ $redirectTo.$item->id }}"
         >
             <td class="text-center">{{ $loop->iteration }}</td>
             @foreach($listItems as $key=>$value)
