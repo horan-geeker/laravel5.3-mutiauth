@@ -26,6 +26,7 @@ Route::group([
     $route->get('/', 'HomeController@index');
     $route->resource('managers', 'ManagerController');
     $route->resource('users', 'UserController');
+    $route->resource('schedules', 'ScheduleController');
 });
 
 /*
