@@ -10,6 +10,7 @@
                     <p><a target="_blank" href="http://mysql.com/">Mysql </a>主从复制，读写分离</p>
                     <p><a target="_blank" href="http://redis.io/">Redis </a>高速存储</p>
                     <p><a target="_blank" href="https://www.elastic.co/">Elasticsearch </a>搜索之王</p>
+                    <p><a target="_blank" href="https://jenkins.io/">Jenkins </a>持续集成</p>
                 </div>
                 <div class="col-md-8" style="padding: 20px">
                     <div class="row text-center">
