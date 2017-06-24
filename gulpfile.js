@@ -20,8 +20,8 @@ require('laravel-elixir-livereload');
 elixir(function (mix) {
 	mix
 	//用户端
-		.sass('web/app.scss', 'public/assets/css/web/app.css')
-		.webpack('web/app.js', 'public/assets/js/web/app.js')
+	// 	.sass('web/app.scss', 'public/assets/css/web/app.css')
+	// 	.webpack('web/app.js', 'public/assets/js/web/app.js')
 
 		//管理员端
 		// .copy([
@@ -44,7 +44,7 @@ elixir(function (mix) {
 			'vendor/layouts/layout/themes/default.scss',
 			'vendor/layouts/layout/themes/darkblue.scss',
 			'vendor/layouts/layout/custom.scss',
-		], 'public/assets/css/admin/app.css')
+		], 'public/admin/assets/css/admin/app.css')
 
 		.scripts([
 			'./node_modules/jquery/dist/jquery.js',
@@ -56,17 +56,17 @@ elixir(function (mix) {
 			'vendor/jquery.pjax.js',
 			'vendor/topbar.js',
 			'vendor/select2.full.min.js',
-		], 'public/assets/js/admin/app.js')
-        .version([
-            'assets/css/web/app.css',
-            'assets/css/admin/app.css',
-            'assets/js/web/app.js',
-            'assets/js/admin/app.js',
-        ]);
+		], 'public/admin/assets/js/admin/app.js')
+        // .version([
+        //     'assets/css/web/app.css',
+        //     'assets/css/admin/app.css',
+        //     'assets/js/web/app.js',
+        //     'assets/js/admin/app.js',
+        // ]);
 
-	if (elixir.config.production) {
-		mix.compress()
-	} else{
-    	mix.livereload();
-	}
+	// if (elixir.config.production) {
+	// 	mix.compress()
+	// } else{
+    	// mix.livereload();
+	// }
 });

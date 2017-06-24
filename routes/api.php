@@ -13,10 +13,9 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:api');
-
-Route::get('users',function (){
-    return response()->json(\App\Models\User::all());
+Route::group([
+    'namespace' => 'Api',
+], function ($route){
+    Route::post('login', 'Auth\LoginController@login');
+    Route::resource('users', 'UserController');
 });
