@@ -44,7 +44,7 @@ elixir(function (mix) {
 			'vendor/layouts/layout/themes/default.scss',
 			'vendor/layouts/layout/themes/darkblue.scss',
 			'vendor/layouts/layout/custom.scss',
-		], 'public/static/css/admin/app.css')
+		], 'public/assets/css/admin/app.css')
 
 		.scripts([
 			'./node_modules/jquery/dist/jquery.js',
@@ -56,7 +56,7 @@ elixir(function (mix) {
 			'vendor/jquery.pjax.js',
 			'vendor/topbar.js',
 			'vendor/select2.full.min.js',
-		], 'public/static/js/admin/app.js')
+		], 'public/assets/js/admin/app.js')
         // .version([
         //     'assets/css/web/app.css',
         //     'assets/css/admin/app.css',
