@@ -6,7 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Notifications\AdminReasetPassword;
 
-class Admin extends Authentictable
+class Admin extends Authenticatable
 {
     use Notifiable;
 
