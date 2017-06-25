@@ -17,7 +17,7 @@ Route::group([
     'namespace' => 'Api',
 ], function () {
     // Handle on passed down request
-    header('Access-Control-Allow-Origin: ' . 'http://localhost:8080');
+    header('Access-Control-Allow-Origin: ' . config('app.domain'));
     header('Access-Control-Allow-Methods: ' . 'GET, POST, PATCH, PUT, DELETE, OPTIONS, HEAD');
     header('Access-Control-Allow-Headers: ' . 'Content-Type, Accept, Cookie, X-Requested-With');
     header('Access-Control-Allow-Credentials: ' . 'true');
@@ -27,6 +27,7 @@ Route::group([
     ], function () {
         Route::post('login', 'LoginController@login');
         Route::post('logout', 'LoginController@logout');
+        Route::post('register','RegisterController@register');
     });
 
     Route::group([

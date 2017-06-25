@@ -2,6 +2,8 @@
 
 return [
 
+    'domain' => env('APP_ENV', 'production')==='production'?env('APP_ENV', 'production'):'http://localhost:8080',
+
     /*
     |--------------------------------------------------------------------------
     | Application Name
