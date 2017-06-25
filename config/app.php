@@ -2,7 +2,7 @@
 
 return [
 
-    'domain' => env('APP_ENV', 'production')==='production'?env('APP_ENV', 'production'):'http://localhost:8080',
+    'domain' => env('APP_ENV', 'production')==='production'?'https://www.majialichen.com':'http://localhost:8080',
 
     /*
     |--------------------------------------------------------------------------
