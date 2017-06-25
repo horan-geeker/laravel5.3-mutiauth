@@ -39,9 +39,12 @@ class LoginController extends Controller
 
             $this->clearLoginAttempts($request);
 
+
+
             return response()->json([
                 'status'=>0,
-                'msg'=>'login success'
+                'msg'=>'login success',
+                'data'=>\Auth::user()
             ]);
 
         }else{
@@ -52,6 +55,18 @@ class LoginController extends Controller
             ]);
         }
 
+    }
+
+    public function logout(Request $request)
+    {
+        $this->guard()->logout();
+
+        $request->session()->regenerate();
+
+        return response()->json([
+            'status'=> 0,
+            'msg'=> 'logout success'
+        ]);
     }
 
 }

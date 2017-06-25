@@ -15,22 +15,38 @@ use Illuminate\Http\Request;
 
 Route::group([
     'namespace' => 'Api',
-], function (){
+], function () {
     // Handle on passed down request
-    header('Access-Control-Allow-Origin: '.'http://localhost:8080');
-    header('Access-Control-Allow-Methods: '.'GET, POST, PATCH, PUT, DELETE, OPTIONS, HEAD');
-    header('Access-Control-Allow-Headers: '.'Content-Type, Accept, Cookie, X-Requested-With');
-    header('Access-Control-Allow-Credentials: '.'true');
+    header('Access-Control-Allow-Origin: ' . 'http://localhost:8080');
+    header('Access-Control-Allow-Methods: ' . 'GET, POST, PATCH, PUT, DELETE, OPTIONS, HEAD');
+    header('Access-Control-Allow-Headers: ' . 'Content-Type, Accept, Cookie, X-Requested-With');
+    header('Access-Control-Allow-Credentials: ' . 'true');
 
     Route::group([
         'namespace' => 'Auth',
-    ], function(){
+    ], function () {
         Route::post('login', 'LoginController@login');
+        Route::post('logout', 'LoginController@logout');
     });
 
     Route::group([
         'middleware' => ['auth.api']
-    ], function() {
+    ], function () {
         Route::resource('users', 'UserController');
+    });
+
+    Route::get('userinfo', function () {
+        $user = Auth::user();
+        if (!$user) {
+            return response()->json([
+                'status' => 4,
+                'msg' => 'user not login'
+            ]);
+        }
+        return response()->json([
+            'status' => 0,
+            'msg' => 'already login',
+            'data' => $user
+        ]);
     });
 });
