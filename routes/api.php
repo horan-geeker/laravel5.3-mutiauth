@@ -15,7 +15,22 @@ use Illuminate\Http\Request;
 
 Route::group([
     'namespace' => 'Api',
-], function ($route){
-    Route::post('login', 'Auth\LoginController@login');
-    Route::resource('users', 'UserController');
+], function (){
+    // Handle on passed down request
+    header('Access-Control-Allow-Origin: '.'http://localhost:8080');
+    header('Access-Control-Allow-Methods: '.'GET, POST, PATCH, PUT, DELETE, OPTIONS, HEAD');
+    header('Access-Control-Allow-Headers: '.'Content-Type, Accept, Cookie, X-Requested-With');
+    header('Access-Control-Allow-Credentials: '.'true');
+
+    Route::group([
+        'namespace' => 'Auth',
+    ], function(){
+        Route::post('login', 'LoginController@login');
+    });
+
+    Route::group([
+        'middleware' => ['auth.api']
+    ], function() {
+        Route::resource('users', 'UserController');
+    });
 });

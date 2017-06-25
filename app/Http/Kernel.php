@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\CrossRequestMiddleware;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -33,9 +34,10 @@ class Kernel extends HttpKernel
         ],
 
         'api' => [
+            'CORS',
+            \Illuminate\Session\Middleware\StartSession::class,
             'throttle:60,1',
             'bindings',
-	        \App\Http\Middleware\CrossRequestMiddleware::class,
         ],
     ];
 
@@ -49,11 +51,13 @@ class Kernel extends HttpKernel
     protected $routeMiddleware = [
         'auth' => \Illuminate\Auth\Middleware\Authenticate::class,
         'auth.admin' => \App\Http\Middleware\AdminAuthMiddleware::class,
+        'auth.api' => \App\Http\Middleware\ApiAuthMiddleware::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        'pjax'                   => \App\Http\Middleware\FilterIfPjax::class,
+        'pjax' => \App\Http\Middleware\FilterIfPjax::class,
+        'CORS' => \App\Http\Middleware\CrossRequestMiddleware::class
     ];
 }

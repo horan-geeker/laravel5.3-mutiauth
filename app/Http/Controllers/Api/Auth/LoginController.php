@@ -43,6 +43,7 @@ class LoginController extends Controller
                 'status'=>0,
                 'msg'=>'login success'
             ]);
+
         }else{
             $this->incrementLoginAttempts($request);
             return response()->json([
@@ -52,4 +53,5 @@ class LoginController extends Controller
         }
 
     }
+
 }

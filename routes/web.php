@@ -33,6 +33,6 @@ Route::group([
  * 前端路由，由 vue-router 处理路由
  */
 
-Route::any('/{catchall?}', function () {
-    return view('web/app');
-})->where('catchall', '(.*)');
+//Route::any('/{catchall?}', function () {
+//    return view('web/app');
+//})->where('catchall', '(.*)');
