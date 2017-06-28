@@ -34,20 +34,21 @@ Route::group([
         'middleware' => ['auth.api']
     ], function () {
         Route::resource('users', 'UserController');
+        Route::get('userinfo', function () {
+            $user = Auth::user();
+            if (!$user) {
+                return response()->json([
+                    'status' => 4,
+                    'msg' => 'user not login'
+                ]);
+            }
+            return response()->json([
+                'status' => 0,
+                'msg' => 'already login',
+                'data' => $user
+            ]);
+        });
     });
 
-    Route::get('userinfo', function () {
-        $user = Auth::user();
-        if (!$user) {
-            return response()->json([
-                'status' => 4,
-                'msg' => 'user not login'
-            ]);
-        }
-        return response()->json([
-            'status' => 0,
-            'msg' => 'already login',
-            'data' => $user
-        ]);
-    });
+
 });

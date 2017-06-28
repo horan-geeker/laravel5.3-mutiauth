@@ -16,6 +16,10 @@ class CrossRequestMiddleware
      */
     public function handle($request, Closure $next, $guard = null)
     {
+        header('Access-Control-Allow-Origin: ' . config('app.domain'));
+        header('Access-Control-Allow-Methods: ' . 'GET, POST, PATCH, PUT, DELETE, OPTIONS, HEAD');
+        header('Access-Control-Allow-Headers: ' . 'Content-Type, Accept, Cookie, X-Requested-With');
+        header('Access-Control-Allow-Credentials: ' . 'true');
 
         return $next($request);
     }

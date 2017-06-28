@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Auth\Events\Registered;
+use App\Models\User;
 
 class RegisterController extends Controller
 {
@@ -19,7 +20,11 @@ class RegisterController extends Controller
      */
     public function register(Request $request)
     {
-        $this->validator($request->all())->validate();
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required'
+        ]);
 
         event(new Registered($user = $this->create($request->all())));
 
@@ -29,6 +34,21 @@ class RegisterController extends Controller
             'status'=> 0,
             'msg'=> 'register success',
             'data'=> \Auth::user()
+        ]);
+    }
+
+    /**
+     * Create a new user instance after a valid registration.
+     *
+     * @param  array  $data
+     * @return User
+     */
+    protected function create(array $data)
+    {
+        return User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => bcrypt($data['password']),
         ]);
     }
 }
