@@ -14,8 +14,8 @@ class AdminsTableSeeder extends Seeder
     {
         $admin = \App\Models\Admin::create([
             'name'     => '超级管理员',
-            'email'    => 'admin@admin.com',
-            'password' => bcrypt('admin123'),
+            'email'    => '13571899655@163.com',
+            'password' => bcrypt('123456'),
         ]);
 
         $permissions = [
