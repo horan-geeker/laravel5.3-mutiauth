@@ -11,14 +11,16 @@ class UserNotify extends Mailable
 {
     use Queueable, SerializesModels;
 
+    protected $data;
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($data)
     {
-        //
+        $this->data = $data;
     }
 
     /**
@@ -28,6 +30,11 @@ class UserNotify extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+        return $this->view('emails.users.notify',[
+            'data'=>$this->data,
+            'level'=>'success',
+            'introLines'=>[],
+            'outroLines'=>[]
+        ])->subject('河马工作室通知您');
     }
 }

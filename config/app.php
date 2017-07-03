@@ -14,7 +14,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => 'Hippo',
+    'name' => 'Hippo Studio',
 
     /*
     |--------------------------------------------------------------------------
@@ -169,7 +169,7 @@ return [
          * Package Service Providers...
          */
 
-        //
+        Barryvdh\Debugbar\ServiceProvider::class,
 
         /*
          * Application Service Providers...

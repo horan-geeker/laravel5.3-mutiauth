@@ -40,9 +40,12 @@ class ScheduleController extends Controller
         $this->validate($request,[
             'emails' => 'required'
         ]);
+        $data = [
+        ];
         foreach ($request->emails as $email){
-            
+            \Mail::to($email)->send(new \App\Mail\UserNotify($data));
         }
+        return redirect('/admin')->with('flash_success_message','发送成功');
     }
 
     /**
