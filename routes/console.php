@@ -28,3 +28,11 @@ Artisan::command('socket',function (){
 
     Worker::runAll();
 });
+
+Artisan::command('sendMail', function () {
+    $users = \App\Models\User::all();
+    foreach ($users as $user) {
+        $job = (new \App\Jobs\SendEmail($user))->delay(\Carbon\Carbon::now()->addSeconds(10));
+        dispatch($job);
+    }
+});
