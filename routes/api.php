@@ -32,7 +32,6 @@ Route::group([
 
     Route::resource('coder','CoderController');
 
-
     Route::group([
         'middleware' => 'auth.api'
     ], function () {

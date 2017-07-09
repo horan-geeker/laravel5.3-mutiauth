@@ -52,6 +52,9 @@ class CoderController extends Controller
     public function show($id)
     {
         $post = Post::find($id);
+        $post->update([
+            'read_count'=>$post->read_count+1
+        ]);
         if (!$post){
             return response([
                 'status'=>1,
