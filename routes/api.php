@@ -30,8 +30,11 @@ Route::group([
         Route::post('register','RegisterController@register');
     });
 
+    Route::resource('coder','CoderController');
+
+
     Route::group([
-        'middleware' => ['auth.api']
+        'middleware' => 'auth.api'
     ], function () {
         Route::resource('users', 'UserController');
         Route::get('userinfo', function () {

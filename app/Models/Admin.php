@@ -33,6 +33,11 @@ class Admin extends Authenticatable
         return $this->belongsToMany(Permission::class,'admin_permissions');
     }
 
+    public function getPermissionModuleAttribute()
+    {
+        return $this->permissions->pluck('name')->toArray();
+    }
+
     /**
      * 覆盖了Authenticatable里的trait CanResetPassword的方法
      *

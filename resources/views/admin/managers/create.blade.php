@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 @section('content')
-    @include('admin.components.create-component',[
-    'pageTitle'=>'管理员',
+    @include('admin.components.create-edit-component',[
+    'pageTitle'=>'新增管理员',
     'smallTitle'=>'权限配置',
     'indexUrl'=>'/admin/managers/',
     'postUrl'=>'/admin/managers/',

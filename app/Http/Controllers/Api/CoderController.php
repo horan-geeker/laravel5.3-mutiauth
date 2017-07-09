@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Api;
 
-use App\Models\Admin;
-use App\Models\Permission;
+use App\Models\Post;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class ManagerController extends Controller
+class CoderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,11 @@ class ManagerController extends Controller
      */
     public function index()
     {
-        return view('admin.managers.index', ['managers' => Admin::paginate()]);
+        return response([
+            'status'=>0,
+            'message'=>'success',
+            'data'=>Post::with('tag')->where('tag_id','<>','1')->get()
+        ]);
     }
 
     /**
@@ -25,13 +29,13 @@ class ManagerController extends Controller
      */
     public function create()
     {
-        return view('admin.managers.create');
+        //
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -42,33 +46,41 @@ class ManagerController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int $id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        //
+        $post = Post::find($id);
+        if (!$post){
+            return response([
+                'status'=>1,
+                'message'=>'not found post',
+            ]);
+        }
+        return response([
+            'status'=>0,
+            'message'=>'success',
+            'data'=>$post->load('tag','user')
+        ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int $id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        return view('admin.managers.edit', [
-            'admin' => Admin::findOrFail($id),
-            'permissions' => Permission::all()->toArray()
-        ]);
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  int $id
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -79,7 +91,7 @@ class ManagerController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int $id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

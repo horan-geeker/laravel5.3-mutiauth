@@ -5,7 +5,7 @@
             <h3 class="page-title pull-left">
                 <a class="a-unstyled" href="{{ $indexUrl }}">
                     <i class="fa fa-chevron-circle-left"></i>
-                </a>新增{{ $pageTitle }}</h3>
+                </a>{{ $pageTitle }}</h3>
         </div>
         <hr>
         <!-- END PAGE HEADER -->
@@ -24,11 +24,39 @@
                     <div class="form-group">
                         <label for="{{ $formItem['name'] }}">{{ $formItem['text'] }}</label>
                         <select name="{{ $formItem['name'] }}" id="{{ $formItem['name'] }}" class="form-control">
-                            @foreach($formItem['options'] as $option)
-                                <option value="{{ $option['value'] }}">{{ $option['name'] }}</option>
+                            @foreach($formItem['options']['lists'] as $option)
+                                <option value="{{ $formItem['options']['value'] }}"
+                                @if($option[$formItem['options']['value']] == $obj['tag_id'])
+                                    selected
+                                @endif
+                                >{{ $option[$formItem['options']['description']] }}</option>
                             @endforeach
                         </select>
                     </div>
+                @elseif(isset($formItem['type']) && $formItem['type'] == 'checkbox')
+                    <div class="form-group">
+                        <label for="{{ $formItem['name'] }}">{{ $formItem['text'] }}</label>
+                        <div class="row">
+                            @foreach($formItem['checkbox']['lists'] as $checkbox)
+                                <div class="col-md-4">
+                                <input type="checkbox" name="{{ $formItem['name'] }}" value="{{ $checkbox[$formItem['checkbox']['value']] }}"
+                                   @if(in_array($checkbox[$formItem['checkbox']['value']],$obj->$formItem['obj_check_name']))
+                                       checked
+                                   @endif
+                                >{{ $checkbox[$formItem['checkbox']['description']] }}
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                @elseif(isset($formItem['type']) && $formItem['type'] == 'textarea')
+                        <div class="form-group">
+                        <label for="{{ $formItem['name'] }}">{{ $formItem['text'] }}</label>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <textarea class="form-control" rows="20">{{ $obj->$formItem['name'] }}</textarea>
+                                </div>
+                            </div>
+                        </div>
                 @else
                     <div class="form-group {{ $errors->has($formItem['name'])?'has-error':'' }}">
 
@@ -41,7 +69,7 @@
                                {{ $role['role_type']."=".$role['role_value'] }}
                                @endforeach
                                @endif
-                               value="{{ old($formItem['name']) }}">
+                               value="{{ old($formItem['name'],isset($obj)?$obj->$formItem['name']:null) }}">
 
                         @if ($errors->has($formItem['name']))
                             <span class="help-block">

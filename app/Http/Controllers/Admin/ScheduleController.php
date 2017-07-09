@@ -37,15 +37,15 @@ class ScheduleController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
+        $this->validate($request, [
             'emails' => 'required'
         ]);
-        $data = [
-        ];
-        foreach ($request->emails as $email){
-            \Mail::to($email)->send(new \App\Mail\UserNotify($data));
+        foreach ($request->emails as $email) {
+            $job = (new \App\Jobs\SendEmail($email))->delay(\Carbon\Carbon::now()->addSeconds(10));
+            dispatch($job);
         }
-        return redirect('/admin')->with('flash_success_message','发送成功');
+
+        return redirect('/admin')->with('flash_success_message', '以打入发送队列正在执行');
     }
 
     /**

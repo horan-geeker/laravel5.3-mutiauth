@@ -12,6 +12,11 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         \App\Models\User::create([
+            'name' => 'horan',
+            'email' => '15891291118@163.com',
+            'password' => bcrypt('123456'),
+        ]);
+        \App\Models\User::create([
             'name' => '普通用户',
             'email' => 'user@user.com',
             'password' => bcrypt('123456'),
@@ -24,16 +29,6 @@ class UsersTableSeeder extends Seeder
         \App\Models\User::create([
             'name' => '马佳荔晨',
             'email' => 'majialichen@hippostudio.com',
-            'password' => bcrypt('123456'),
-        ]);
-        \App\Models\User::create([
-            'name' => 'horan',
-            'email' => '13571899655@163.com',
-            'password' => bcrypt('123456'),
-        ]);
-        \App\Models\User::create([
-            'name' => 'hejunwei',
-            'email' => '15891291118@163.com',
             'password' => bcrypt('123456'),
         ]);
     }

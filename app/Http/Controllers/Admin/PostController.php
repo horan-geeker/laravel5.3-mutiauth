@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Admin;
-use App\Models\Permission;
+use App\Models\Post;
+use App\Models\Tag;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class ManagerController extends Controller
+class PostController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +16,7 @@ class ManagerController extends Controller
      */
     public function index()
     {
-        return view('admin.managers.index', ['managers' => Admin::paginate()]);
+        return view('admin.posts.index',['posts'=>Post::paginate()]);
     }
 
     /**
@@ -25,13 +26,13 @@ class ManagerController extends Controller
      */
     public function create()
     {
-        return view('admin.managers.create');
+        //
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -42,7 +43,7 @@ class ManagerController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int $id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -53,22 +54,22 @@ class ManagerController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int $id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        return view('admin.managers.edit', [
-            'admin' => Admin::findOrFail($id),
-            'permissions' => Permission::all()->toArray()
+        return view('admin.posts.edit',[
+            'post'=>Post::findOrFail($id),
+            'tags'=>Tag::all()
         ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  int $id
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -79,7 +80,7 @@ class ManagerController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int $id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

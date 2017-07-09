@@ -20,13 +20,17 @@ Route::group([
     'prefix' => 'admin',
     'namespace' => 'Admin',
     'middleware' => 'pjax',
-], function ($route) {
+], function () {
     Auth::routes();
-
-    $route->get('/', 'HomeController@index');
-    $route->resource('managers', 'ManagerController');
-    $route->resource('users', 'UserController');
-    $route->resource('schedules', 'ScheduleController');
+    Route::group([
+        'middleware' => 'auth.admin:admin'
+    ],function ($route){
+        $route->get('/', 'HomeController@index');
+        $route->resource('managers', 'ManagerController');
+        $route->resource('users', 'UserController');
+        $route->resource('schedules', 'ScheduleController');
+        $route->resource('posts', 'PostController');
+    });
 });
 
 /*

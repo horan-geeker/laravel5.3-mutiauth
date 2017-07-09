@@ -12,15 +12,15 @@ class SendEmail implements ShouldQueue
 {
     use InteractsWithQueue, Queueable, SerializesModels;
 
-    protected $user;
+    protected $email;
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct(User $user)
+    public function __construct($email)
     {
-        $this->user = $user;
+        $this->email = $email;
     }
 
     /**
@@ -30,6 +30,6 @@ class SendEmail implements ShouldQueue
      */
     public function handle()
     {
-        \Mail::to($this->user->email)->send(new \App\Mail\UserNotify([]));
+        \Mail::to($this->email)->send(new \App\Mail\UserNotify([]));
     }
 }
