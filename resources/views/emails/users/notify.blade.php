@@ -96,11 +96,9 @@ $style = [
                                         </h1>
 
                                         <!-- Intro -->
-                                        @foreach ($introLines as $line)
-                                            <p style="{{ $style['paragraph'] }}">
-                                                {{ $line }}
-                                            </p>
-                                        @endforeach
+                                        <p style="{{ $style['paragraph'] }}">
+                                            恭喜您，注册成功
+                                        </p>
 
                                         <!-- Action Button -->
                                         @if (isset($actionText))
@@ -130,13 +128,6 @@ $style = [
                                                 </tr>
                                             </table>
                                         @endif
-
-                                        <!-- Outro -->
-                                        @foreach ($outroLines as $line)
-                                            <p style="{{ $style['paragraph'] }}">
-                                                {{ $line }}
-                                            </p>
-                                        @endforeach
 
                                         <!-- Salutation -->
                                         <p style="{{ $style['paragraph'] }}">

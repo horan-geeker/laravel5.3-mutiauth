@@ -14,7 +14,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => 'Hippo Studio',
+    'name' => '河马工作室',
 
     /*
     |--------------------------------------------------------------------------
@@ -66,7 +66,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Asia/Shanghai',
 
     /*
     |--------------------------------------------------------------------------

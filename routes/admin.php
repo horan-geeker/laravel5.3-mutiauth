@@ -31,6 +31,13 @@ Route::group([
         $route->resource('schedules', 'ScheduleController');
         $route->resource('posts', 'PostController');
     });
+    Route::get('/test/email-view',function (){
+        return view('emails.users.notify',[
+            'level'=>'success',
+            'introLines'=>['恭喜你注册成功'],
+            'outroLines'=>['感谢您对我们的支持，此邮件请勿回复']
+        ]);
+    });
 });
 
 /*

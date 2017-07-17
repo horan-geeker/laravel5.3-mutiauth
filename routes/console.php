@@ -32,7 +32,7 @@ Artisan::command('socket',function (){
 Artisan::command('sendMail', function () {
     $users = \App\Models\User::all();
     foreach ($users as $user) {
-        $job = (new \App\Jobs\SendEmail($user->email))->delay(\Carbon\Carbon::now()->addSeconds(10));
+        $job = new \App\Jobs\SendEmail($user->email, new \App\Mail\UserNotify('success',[]));
         dispatch($job);
     }
 });

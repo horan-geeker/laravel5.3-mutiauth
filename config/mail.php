@@ -56,8 +56,8 @@ return [
     */
 
     'from' => [
-        'address' => 'hippo@majialichen.com',
-        'name' => 'Hippo Studio',
+        'address' => 'no-reply@hippo-studio.com',
+        'name' => '河马工作室',
     ],
 
     /*

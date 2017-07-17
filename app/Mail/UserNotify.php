@@ -11,16 +11,20 @@ class UserNotify extends Mailable
 {
     use Queueable, SerializesModels;
 
-    protected $data;
+    protected $level;
+    protected $intros;
+    protected $outros;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($data)
+    public function __construct($level, $intros, $outros=['感谢您对我们的支持，此邮件请勿回复'])
     {
-        $this->data = $data;
+        $this->level = $level;
+        $this->intros = $intros;
+        $this->outros = $outros;
     }
 
     /**
@@ -30,11 +34,10 @@ class UserNotify extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.users.notify',[
-            'data'=>$this->data,
-            'level'=>'success',
-            'introLines'=>[],
-            'outroLines'=>[]
+        return $this->view('emails.users.notify')->with([
+            'level' => $this->level,
+            'introLines' => $this->intros,
+            'outroLines' => $this->outros,
         ])->subject('河马工作室通知您');
     }
 }
