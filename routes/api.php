@@ -51,7 +51,9 @@ Route::group([
                 'data' => $user
             ]);
         });
+
     });
+    Route::post('upload/image', 'UploadController@image');
 
 
 });
