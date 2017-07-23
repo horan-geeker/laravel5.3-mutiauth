@@ -16,9 +16,9 @@ class CodeController extends Controller
     public function index()
     {
         return response([
-            'status'=>0,
-            'message'=>'success',
-            'data'=>Post::with('tag')->where('tag_id','<>','1')->get()
+            'status' => 0,
+            'message' => 'success',
+            'data' => Post::with('tag')->orderBy('updated_at','DESC')->get()
         ]);
     }
 
@@ -35,43 +35,55 @@ class CodeController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
+        $post = Post::create([
+            'user_id' => \Auth::user()->id,
+            'tag_id' => $request->tag_id,
+            'title' => $request->title,
+            'content' => $request->input('content'),
+            'thumbnail' => $request->thumbnail
+        ]);
+        return response()->json([
+            'status' => 0,
+            'message' => 'success',
+            'data' => $post
+        ]);
+
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
         $post = Post::find($id);
         $post->update([
-            'read_count'=>$post->read_count+1
+            'read_count' => $post->read_count + 1
         ]);
-        if (!$post){
+        if (!$post) {
             return response([
-                'status'=>1,
-                'message'=>'not found post',
+                'status' => 1,
+                'message' => 'not found post',
             ]);
         }
         return response([
-            'status'=>0,
-            'message'=>'success',
-            'data'=>$post->load('tag','user')
+            'status' => 0,
+            'message' => 'success',
+            'data' => $post->load('tag', 'user')
         ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -82,8 +94,8 @@ class CodeController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -94,7 +106,7 @@ class CodeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

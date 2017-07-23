@@ -27,11 +27,19 @@ Route::group([
     ], function () {
         Route::post('login', 'LoginController@login');
         Route::post('logout', 'LoginController@logout');
-        Route::post('register','RegisterController@register');
+        Route::post('register', 'RegisterController@register');
     });
 
-    Route::resource('code','CodeController');
-    Route::resource('design','DesignController');
+    Route::resource('code', 'CodeController');
+    Route::resource('design', 'DesignController');
+
+    Route::get('tag', function () {
+        return response()->json([
+            'status' => 0,
+            'msg' => 'ok',
+            'data' => \App\Models\Tag::all()
+        ]);
+    });
 
     Route::group([
         'middleware' => 'auth.api'
