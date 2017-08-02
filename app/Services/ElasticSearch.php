@@ -15,7 +15,7 @@ class ElasticSearch
     public function __construct(ClientBuilder $builder)
     {
         $builder = ClientBuilder::create();
-        $builder->setHosts(['115.28.82.133:9200','115.28.82.133:9201']);
+        $builder->setHosts(config('app.elastic_search'));
         $this->client = $builder->build();
     }
 

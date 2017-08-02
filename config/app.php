@@ -7,6 +7,8 @@ return [
     'kafka_hosts' => env('KAFKA_HOSTS', '127.0.0.1:9092'),
 
     'kafka_version' => env('KAFKA_VERSION', '0.8.1.1'),
+
+    'elastic_search' => explode(',', env('ELASTIC_SEARCH', '127.0.0.1:9200')),
     /*
     |--------------------------------------------------------------------------
     | Application Name
