@@ -21,6 +21,11 @@ class KafkaService
                     'value' => $value,
                 ];
             }
+        }else{
+            $queryBuilder[] = [
+                'topic' => 'posts',
+                'value' => $data
+            ];
         }
         $producer = new \Kafka\Producer(function() use ($queryBuilder) {
             return $queryBuilder;
