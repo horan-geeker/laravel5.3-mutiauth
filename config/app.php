@@ -4,6 +4,9 @@ return [
 
     'domain' => env('APP_ENV', 'production')==='production'?'http://hippo-studio.com':'http://localhost:8080',
 
+    'kafka_hosts' => env('KAFKA_HOSTS', '127.0.0.1:9092'),
+
+    'kafka_version' => env('KAFKA_VERSION', '0.8.1.1'),
     /*
     |--------------------------------------------------------------------------
     | Application Name
@@ -177,6 +180,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\ErrorHandlerServiceProvider::class,
 
     ],
 

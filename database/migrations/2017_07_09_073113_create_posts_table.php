@@ -22,7 +22,8 @@ class CreatePostsTable extends Migration
             $table->text('content');
             $table->unsignedInteger('read_count')->default(0);
 
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent();
             
             $table->foreign('tag_id')->references('id')->on('tags')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

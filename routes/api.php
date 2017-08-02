@@ -17,10 +17,10 @@ Route::group([
     'namespace' => 'Api',
 ], function () {
     // Handle on passed down request
-    header('Access-Control-Allow-Origin: ' . config('app.domain'));
-    header('Access-Control-Allow-Methods: ' . 'GET, POST, PATCH, PUT, DELETE, OPTIONS, HEAD');
-    header('Access-Control-Allow-Headers: ' . 'Content-Type, Accept, Cookie, X-Requested-With');
-    header('Access-Control-Allow-Credentials: ' . 'true');
+//    header('Access-Control-Allow-Origin: ' . config('app.domain'));
+//    header('Access-Control-Allow-Methods: ' . 'GET, POST, PATCH, PUT, DELETE, OPTIONS, HEAD');
+//    header('Access-Control-Allow-Headers: ' . 'Content-Type, Accept, Cookie, X-Requested-With');
+//    header('Access-Control-Allow-Credentials: ' . 'true');
 
     Route::group([
         'namespace' => 'Auth',
@@ -30,6 +30,7 @@ Route::group([
         Route::post('register', 'RegisterController@register');
     });
 
+    Route::get('post/top', 'CodeController@top');
     Route::resource('code', 'CodeController');
     Route::resource('design', 'DesignController');
 

@@ -3,10 +3,20 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
+use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+
+    protected $userRepository;
+
+    public function __construct(UserRepository $userRepository)
+    {
+        parent::__construct();
+        $this->userRepository = $userRepository;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +24,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('admin.users.index',['users'=>User::paginate()]);
+        return view('admin.users.index',['users'=>$this->userRepository->getAllUserPaginate()]);
     }
 
     /**
