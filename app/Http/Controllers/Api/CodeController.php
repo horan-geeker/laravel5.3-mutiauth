@@ -28,6 +28,24 @@ class CodeController extends Controller
         ]);
     }
 
+    public function searchSuggest(Request $request)
+    {
+        if (!$request->has('q')) {
+            return response()->json([
+                'status' => 1,
+                'message' => 'param can not empty',
+            ]);
+        }
+
+        $posts = $this->postService->searchSuggest($request->q);
+
+        return response()->json([
+            'status' => 0,
+            'message' => 'success',
+            'data' => $posts
+        ]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -37,7 +55,7 @@ class CodeController extends Controller
     {
         if ($request->has('q')) {
             $posts = $this->postService->searchPosts($request->q);
-        } else{
+        } else {
             $posts = $this->postService->getPostsByUpdateTime();
         }
         return response([

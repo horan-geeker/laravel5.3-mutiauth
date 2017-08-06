@@ -51,4 +51,17 @@ class PostService
         return $data;
     }
 
+    public function searchSuggest($query)
+    {
+        $fetch = $this->postRepository->searchSuggest($query);
+        $data = [];
+        foreach ($fetch as $item)
+        {
+            $temp['id'] = $item['_id'];
+            $temp['title'] = $item['_source']['title'];
+            $data[] = $temp;
+        }
+        return $data;
+    }
+
 }

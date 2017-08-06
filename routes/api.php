@@ -31,6 +31,7 @@ Route::group([
     });
 
     Route::get('post/top', 'CodeController@top');
+    Route::get('post/search', 'CodeController@searchSuggest');
     Route::resource('code', 'CodeController');
     Route::resource('design', 'DesignController');
 

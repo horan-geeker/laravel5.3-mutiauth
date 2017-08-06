@@ -47,7 +47,30 @@ class PostRepository
                 ]
             ]
         ];
-        return $this->elasticSearch->search($params);
+        return $this->elasticSearch->search($params)['hits']['hits'];
+    }
+
+    public function searchSuggest($query)
+    {
+        $params = [
+            'index' => 'posts',
+            'type' => 'articles',
+            'body' => [
+                'suggest' => [
+                    'suggestions' => [
+                        'text' => $query,
+                        'completion' => [
+                            'field' => 'suggest',
+                            'fuzzy' => [
+                                'fuzziness' => 2
+                            ]
+                        ]
+                    ]
+                ],
+                '_source' => 'title'
+            ]
+        ];
+        return $this->elasticSearch->search($params)['suggest']['suggestions'][0]['options'];
     }
 
 }

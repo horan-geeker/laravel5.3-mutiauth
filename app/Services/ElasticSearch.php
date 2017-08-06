@@ -21,7 +21,7 @@ class ElasticSearch
 
     public function search($query)
     {
-        return $this->client->search($query)['hits']['hits'];
+        return $this->client->search($query);
     }
 
     public function insert($data)
