@@ -14,17 +14,19 @@ class UserNotify extends Mailable
     protected $level;
     protected $intros;
     protected $outros;
+    protected $subject;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($level, $intros, $outros=['感谢您对我们的支持，此邮件请勿回复'])
+    public function __construct($level, $intros, $outros=['感谢您对我们的支持，此邮件请勿回复'], $subject='河马工作室通知您')
     {
         $this->level = $level;
         $this->intros = $intros;
         $this->outros = $outros;
+        $this->subject = $subject;
     }
 
     /**
@@ -38,6 +40,6 @@ class UserNotify extends Mailable
             'level' => $this->level,
             'introLines' => $this->intros,
             'outroLines' => $this->outros,
-        ])->subject('河马工作室通知您');
+        ])->subject($this->subject);
     }
 }

@@ -113,15 +113,15 @@ Admin:insert({
 MARKDOWN
         ];
         $postOR = \App\Models\Post::create($postOR);
-        KafkaService::produce([
-            json_encode([
-            'type' => 'elasticsearch',
-            'data' => $postJenkins->load('tag')->toArray()
-            ]),
-            json_encode([
-            'type' => 'elasticsearch',
-            'data' => $postOR->load('tag')->toArray()
-            ]),
-        ]);
+//        KafkaService::produce([
+//            json_encode([
+//            'type' => 'elasticsearch',
+//            'data' => $postJenkins->load('tag')->toArray()
+//            ]),
+//            json_encode([
+//            'type' => 'elasticsearch',
+//            'data' => $postOR->load('tag')->toArray()
+//            ]),
+//        ]);
     }
 }

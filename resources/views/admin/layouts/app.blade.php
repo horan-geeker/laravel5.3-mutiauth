@@ -122,6 +122,10 @@
         // init app
         app.init();
     });
+    // 全局 ajax 表单提交使用的 csrf token
+    $.ajaxSetup({
+        headers: {'X-CSRF-TOKEN': window.Laravel.csrfToken}
+    });
 </script>
 </body>
 </html>
