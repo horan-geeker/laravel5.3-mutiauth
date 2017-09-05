@@ -243,19 +243,19 @@ MARKDOWN
 
         $postVIM = \App\Models\Post::create($postVIM);
 
-        KafkaService::produce([
-            json_encode([
-                'type' => 'elasticsearch',
-                'data' => $postJenkins->load('tag')->toArray()
-            ]),
-            json_encode([
-                'type' => 'elasticsearch',
-                'data' => $postOR->load('tag')->toArray()
-            ]),
-            json_encode([
-                'type' => 'elasticsearch',
-                'data' => $postVIM->load('tag')->toArray()
-            ]),
-        ]);
+//        KafkaService::produce([
+//            json_encode([
+//                'type' => 'elasticsearch',
+//                'data' => $postJenkins->load('tag')->toArray()
+//            ]),
+//            json_encode([
+//                'type' => 'elasticsearch',
+//                'data' => $postOR->load('tag')->toArray()
+//            ]),
+//            json_encode([
+//                'type' => 'elasticsearch',
+//                'data' => $postVIM->load('tag')->toArray()
+//            ]),
+//        ]);
     }
 }

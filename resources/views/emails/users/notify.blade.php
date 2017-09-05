@@ -97,7 +97,7 @@ $style = [
 
                                         <!-- Intro -->
                                         <p style="{{ $style['paragraph'] }}">
-                                            恭喜您，注册成功
+                                            {{ $introLines }}
                                         </p>
 
                                         <!-- Action Button -->

@@ -3,6 +3,9 @@
 use Illuminate\Foundation\Inspiring;
 use Workerman\Worker;
 use PHPSocketIO\SocketIO;
+use PhpAmqpLib\Connection\AMQPStreamConnection;
+use PhpAmqpLib\Message\AMQPMessage;
+
 /*
 |--------------------------------------------------------------------------
 | Console Routes
@@ -32,7 +35,47 @@ Artisan::command('socket',function (){
 Artisan::command('sendMail', function () {
     $users = \App\Models\User::all();
     foreach ($users as $user) {
-        $job = new \App\Jobs\SendEmail($user->email, new \App\Mail\UserNotify('success',[]));
+        $job = new \App\Jobs\SendEmail($user->email, new \App\Mail\UserNotify('success',['恭喜你注册成功']));
         dispatch($job);
     }
+});
+
+Artisan::command('consumer', function () {
+    $connection = new AMQPStreamConnection('localhost', 5672, 'guest', 'guest');
+    $channel = $connection->channel();
+
+    $channel->exchange_declare('logs', 'fanout', false, false, false);
+
+    list($queue_name, ,) = $channel->queue_declare("", false, false, true, false);
+
+    $channel->queue_bind($queue_name, 'logs');
+
+    echo ' [*] Waiting for logs. To exit press CTRL+C', "\n";
+
+    $callback = function($msg){
+        echo ' [x] ', $msg->body, "\n";
+    };
+
+    $channel->basic_consume($queue_name, '', false, true, false, false, $callback);
+
+    while(count($channel->callbacks)) {
+        $channel->wait();
+    }
+
+    $channel->close();
+    $connection->close();
+
+});
+
+Artisan::command('producer', function () {
+    $connection = new AMQPStreamConnection('127.0.0.1', '5672', 'guest', 'guest');
+    $channel = $connection->channel();
+    $channel->exchange_declare('logs', 'fanout', false, false, false);
+
+    $message = new AMQPMessage("Hello world");
+    $channel->basic_publish($message, 'logs');
+
+    echo " [x] Sent success\n";
+    $channel->close();
+    $connection->close();
 });

