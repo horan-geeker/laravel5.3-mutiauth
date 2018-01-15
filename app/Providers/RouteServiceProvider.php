@@ -43,7 +43,7 @@ class RouteServiceProvider extends ServiceProvider
     }
 
     /**
-     * Define the "web" routes for the application.
+     * Define the "admin" routes for the application.
      *
      * These routes all receive session state, CSRF protection, etc.
      *
@@ -52,9 +52,10 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapAdminRoutes()
     {
         Route::group([
+            'domain' => config('app.admin_domain'),
             'middleware' => 'web',
             'namespace' => $this->namespace,
-            'prefix' => 'admin'
+//            'prefix' => 'admin'
         ], function ($router) {
             require base_path('routes/admin.php');
         });
@@ -70,6 +71,7 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapApiRoutes()
     {
         Route::group([
+            'domain' => config('app.api_domain'),
             'middleware' => 'api',
             'namespace' => $this->namespace,
 //            'prefix' => 'api',
