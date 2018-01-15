@@ -17,7 +17,6 @@
 
 
 Route::group([
-    'prefix' => 'admin',
     'namespace' => 'Admin',
     'middleware' => 'pjax',
 ], function () {
