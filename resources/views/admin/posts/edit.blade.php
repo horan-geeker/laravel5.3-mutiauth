@@ -5,7 +5,7 @@
     'pageTitle'=>'编辑文章',
     'smallTitle'=>'编辑用户文章',
     'indexUrl'=>'/admin/posts/',
-    'postUrl'=>"/admin/posts/$post->id/",
+    'postUrl'=>"/posts/$post->id/",
     'formItems' => [
             [
                 'text'=>'标题',

@@ -27,7 +27,7 @@
     <div class="page-header-inner">
         <!-- BEGIN LOGO -->
         <div class="page-logo">
-            <a href="/admin/">
+            <a href="/">
                 {{--<img src="../assets/layouts/layout/img/logo.png" alt="logo" class="logo-default"/>--}}
 
                 后台管理系统
@@ -57,7 +57,7 @@
 
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="/admin/logout" onclick="event.preventDefault();
+                                <a href="/logout" onclick="event.preventDefault();
         document.getElementById('logout-form').submit();">
                                     <i class="fa fa-sign-out"></i> 退出 </a>
 
@@ -68,7 +68,7 @@
                         </ul>
                     </li>
                 @else
-                    <li class="dropdown dropdown-user"><a href="/admin/login" class="dropdown-toggle">
+                    <li class="dropdown dropdown-user"><a href="/login" class="dropdown-toggle">
                             <span class="username"> Login </span>
                             <i class="fa fa-sign-in"></i>
                         </a></li>

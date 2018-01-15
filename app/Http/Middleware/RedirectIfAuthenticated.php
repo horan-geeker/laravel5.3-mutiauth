@@ -19,8 +19,7 @@ class RedirectIfAuthenticated
     {
         if (Auth::guard($guard)->check()) {
             // 根据不同 guard 跳转到不同的页面
-            $url = $guard ? 'admin/':'/';
-            return redirect($url);
+            return redirect('/');
         }
 
         return $next($request);

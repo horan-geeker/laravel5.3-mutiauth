@@ -8,7 +8,7 @@
 
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <form action="/admin/schedules" method="post">
+            <form action="/schedules" method="post">
                 {{ csrf_field() }}
                 <table class="table text-center">
                     <thead>

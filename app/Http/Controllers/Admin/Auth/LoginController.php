@@ -27,7 +27,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/admin';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -50,9 +50,9 @@ class LoginController extends Controller
     public function redirectToLogin()
     {
         if ($this->guard()->user()) {
-            return redirect('/admin/');
+            return redirect('/');
         }
-        return redirect('/admin/login');
+        return redirect('/login');
     }
 
     protected function guard()
@@ -68,6 +68,6 @@ class LoginController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect('/admin/login');
+        return redirect('/login');
     }
 }

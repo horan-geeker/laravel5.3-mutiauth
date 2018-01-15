@@ -11,7 +11,7 @@ $pathname = explode($_SERVER['HTTP_HOST'], url()->current())[1];
         <!-- BEGIN SIDEBAR MENU -->
         <ul class="page-sidebar-menu">
             <li class="{{ $pathname == '/admin' ? 'active' : '' }}">
-                <a href="/admin"
+                <a href="/"
                    data-pjax
                    data-container="#page_content_container"
                 >
