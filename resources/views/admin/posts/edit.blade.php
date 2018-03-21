@@ -4,7 +4,7 @@
     'obj'=>$post,
     'pageTitle'=>'编辑文章',
     'smallTitle'=>'编辑用户文章',
-    'indexUrl'=>'/admin/posts/',
+    'indexUrl'=>'/posts/',
     'postUrl'=>"/posts/$post->id/",
     'formItems' => [
             [
@@ -26,6 +26,7 @@
                 'text'=>'标签',
                 'name'=>'tag',
                 'type'=>'select',
+                'selected_key' => 'tag_id',
                 'options'=>[
                     'value'=>'id',
                     'description'=>'type',

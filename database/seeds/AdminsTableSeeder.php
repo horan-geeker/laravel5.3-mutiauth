@@ -19,10 +19,10 @@ class AdminsTableSeeder extends Seeder
         ]);
 
         $permissions = [
-            ['name' => 'admin module', 'description' => '管理员管理', 'uri' => '/admin/managers', 'title' => '后台管理'],
-            ['name' => 'user module', 'description' => '用户管理', 'uri' => '/admin/users', 'title' => '前台管理'],
-            ['name' => 'post module', 'description' => '文章管理', 'uri' => '/admin/posts', 'title' => '前台管理'],
-            ['name' => 'schedule module', 'description' => '定期任务', 'uri' => '/admin/schedules', 'title' => '任务管理'],
+            ['name' => 'admin module', 'description' => '管理员管理', 'uri' => '/managers', 'title' => '后台管理'],
+            ['name' => 'user module', 'description' => '用户管理', 'uri' => '/users', 'title' => '前台管理'],
+            ['name' => 'post module', 'description' => '文章管理', 'uri' => '/posts', 'title' => '前台管理'],
+            ['name' => 'schedule module', 'description' => '定期任务', 'uri' => '/schedules', 'title' => '任务管理'],
         ];
 
         Permission::insert($permissions);

@@ -4,8 +4,8 @@
     'obj'=>$admin,
     'pageTitle'=>'编辑管理员',
     'smallTitle'=>'权限配置',
-    'indexUrl'=>'/admin/managers/',
-    'postUrl'=>'/admin/managers/',
+    'indexUrl'=>'/managers/',
+    'postUrl'=>'/managers/',
     'formItems' => [
             [
                 'text'=>'名称',
@@ -25,7 +25,8 @@
                 'text'=>'权限',
                 'name'=>'permissions',
                 'type'=>'checkbox',
-                'obj_check_name'=>'permission_module',
+                'array_checked'=>$admin->permissions->pluck('id')->toArray(),
+                'checked_key' => 'id',
                 'checkbox'=> [
                     'value'=>'name',
                     'description'=>'description',

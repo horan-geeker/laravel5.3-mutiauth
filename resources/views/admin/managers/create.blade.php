@@ -3,8 +3,8 @@
     @include('admin.components.create-edit-component',[
     'pageTitle'=>'新增管理员',
     'smallTitle'=>'权限配置',
-    'indexUrl'=>'/admin/managers/',
-    'postUrl'=>'/admin/managers/',
+    'indexUrl'=>'/managers/',
+    'postUrl'=>'/managers/',
     'formItems' => [
             [
                 'text'=>'名称',
@@ -22,17 +22,12 @@
             ],
             [
                 'text'=>'权限',
-                'name'=>'description',
-                'type'=>'select',
-                'options'=>[
-                    [
-                        'name'=>'超级管理员',
-                        'value'=>'superAdmin',
-                    ],
-                    [
-                        'name'=>'普通管理员',
-                        'value'=>'normalAdmin',
-                    ]
+                'name'=>'permissions',
+                'type'=>'checkbox',
+                'checkbox'=> [
+                    'value'=>'name',
+                    'description'=>'description',
+                    'lists'=>$permissions
                 ]
             ]
         ],

@@ -26,10 +26,5 @@ class UsersTableSeeder extends Seeder
             'email' => 'hejunwei@hippostudio.com',
             'password' => bcrypt('123456'),
         ]);
-        \App\Models\User::create([
-            'name' => '马佳荔晨',
-            'email' => 'majialichen@hippostudio.com',
-            'password' => bcrypt('123456'),
-        ]);
     }
 }

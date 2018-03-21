@@ -25,7 +25,7 @@ class ManagerController extends Controller
      */
     public function create()
     {
-        return view('admin.managers.create');
+        return view('admin.managers.create', ['permissions' => Permission::all()]);
     }
 
     /**

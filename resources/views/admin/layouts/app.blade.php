@@ -61,7 +61,7 @@
         document.getElementById('logout-form').submit();">
                                     <i class="fa fa-sign-out"></i> 退出 </a>
 
-                                <form id="logout-form" action="{{ url('/admin/logout') }}" method="POST" style="display: none;">
+                                <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
                                     {{ csrf_field() }}
                                 </form>
                             </li>
