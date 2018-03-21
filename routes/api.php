@@ -21,7 +21,7 @@ Route::group([
 //    header('Access-Control-Allow-Methods: ' . 'GET, POST, PATCH, PUT, DELETE, OPTIONS, HEAD');
 //    header('Access-Control-Allow-Headers: ' . 'Content-Type, Accept, Cookie, X-Requested-With');
 //    header('Access-Control-Allow-Credentials: ' . 'true');
-    Route::get('test', function (Request $request) {
+    Route::post('test', function (Request $request) {
         return response($request->all());
     });
     Route::group([
