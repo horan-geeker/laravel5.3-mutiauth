@@ -3,6 +3,7 @@
 namespace App\Http;
 
 use App\Http\Middleware\CrossRequestMiddleware;
+use App\Http\Middleware\ParseJson;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -34,6 +35,7 @@ class Kernel extends HttpKernel
         ],
 
         'api' => [
+            ParseJson::class,
             \Illuminate\Session\Middleware\StartSession::class,
             'throttle:60,1',
             'bindings',
